@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
     }
-    //初始化
+    //初始化888888888
     protected void initView(){
 
         btn1  = (RadioButton) findViewById(R.id.bt1);
