@@ -159,8 +159,8 @@
                android:text="书籍完整目录"
                android:textColor="#000000" />
            <ImageView
-               android:layout_width="34px"
-               android:layout_height="34px"
+               android:layout_width="28px"
+               android:layout_height="28px"
                android:src="@drawable/right_btn"
                />
        </TableRow>
