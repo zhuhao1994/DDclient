@@ -1,0 +1,74 @@
+package zhu.com.ddclient.activity;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+
+import zhu.com.ddclient.R;
+import zhu.com.ddclient.fragment.HomeFragment;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private LinearLayout fragment_container = null;
+    private RadioButton btn1 = null;    //主页
+    private RadioButton btn2 = null;    //购物车
+    private RadioButton btn3 = null;    //订单
+    private RadioButton btn4 = null;    //订单确认
+    private RadioButton btn5 = null ;   //设置
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
+    }
+    //初始化
+    protected void initView(){
+
+        btn1  = (RadioButton) findViewById(R.id.bt1);
+        btn2  = (RadioButton) findViewById(R.id.bt2);
+        btn3  = (RadioButton) findViewById(R.id.bt3);
+        btn4  = (RadioButton) findViewById(R.id.bt4);
+        btn5  = (RadioButton) findViewById(R.id.bt5);
+
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+        btn5.setOnClickListener(this);
+
+        HomeFragment home = new HomeFragment();
+        home.setContext(MainActivity.this);
+        chageView(home);
+    }
+    //切换fragment
+    public void chageView(Fragment fragment){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragment_container,fragment);
+        ft.commit();
+    }
+
+    //监听函数
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bt1:
+
+                break;
+            case R.id.bt2:
+
+                break;
+            case R.id.bt3:
+
+                break;
+            case R.id.bt4:
+
+                break;
+            case R.id.bt5:
+
+                break;
+        }
+    }
+}
