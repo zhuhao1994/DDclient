@@ -17,13 +17,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:background="#fff8dc"
-        android:gravity="center">
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
             android:orientation="horizontal">
             <RadioButton
                 android:layout_width="0dp"
@@ -31,9 +33,9 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:drawableTop="@drawable/home_btn"
+                android:drawableTop="@drawable/home"
                 android:text="首页"
-                android:textColor="#000000"
+                android:textColor="#555555"
                 android:checked="false"
                 android:id="@+id/bt1"/>
             <RadioButton
@@ -41,7 +43,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/car_btn"
+                android:drawableTop="@drawable/cart_grey"
                 android:button="@null"
                 android:text="购物车"
                 android:textColor="#000000"
@@ -51,10 +53,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/book_btn"
+                android:drawableTop="@drawable/order_grey"
                 android:button="@null"
                 android:text="订单"
-                android:textColor="#000000"
+                android:textColor="#555555"
                 android:id="@+id/bt3"/>
             <RadioButton
                 android:layout_width="0dp"
@@ -62,9 +64,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:button="@null"
-                android:drawableTop="@drawable/yes"
+                android:drawableTop="@drawable/order_yes_grey"
                 android:text="订单确认"
-                android:textColor="#000000"
+                android:textColor="#555555"
                 android:id="@+id/bt4"/>
             <RadioButton
                 android:layout_width="0dp"
@@ -72,9 +74,9 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:drawableTop="@drawable/setting_btn"
+                android:drawableTop="@drawable/setting_grey"
                 android:text="设置"
-                android:textColor="#000000"
+                android:textColor="#555555"
                 android:id="@+id/bt5"/>
         </RadioGroup>
         <!--<LinearLayout-->
