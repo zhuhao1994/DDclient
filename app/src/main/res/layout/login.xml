@@ -82,6 +82,7 @@
                 android:layout_span="2"
                 android:text="登录"
                 android:background="@color/blue"
+                android:onClick="login"
 
               />
         </TableRow>
