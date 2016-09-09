@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import zhu.com.ddclient.R;
 
 /**
  * Created by zhu on 2016/9/9.
@@ -15,6 +18,7 @@ public class CartFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View root = inflater.inflate(R.layout.cart_fragment,container,false);
+        return root;
     }
 }
