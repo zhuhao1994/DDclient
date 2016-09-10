@@ -40,12 +40,13 @@
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="用户名"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
             <EditText  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/editsharp"
-               />
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/bg_edittext"
+                android:enabled="true"
+                android:textColor="@color/black" />
             <TextView android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text=""/>
@@ -57,8 +58,10 @@
                 android:textColor="@color/black"/>
             <EditText android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/editsharp"/>
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/bg_edittext"
+                android:enabled="true"
+                android:textColor="@color/black"/>
         </TableRow>
         <TableRow android:layout_margin="20dp">
             <TextView android:layout_width="wrap_content"
@@ -76,7 +79,9 @@
                 <EditText
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/editsharp"/>
+                    android:background="@drawable/bg_edittext"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="8dp"/>
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
