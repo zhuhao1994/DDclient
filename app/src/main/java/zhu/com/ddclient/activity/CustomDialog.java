@@ -33,6 +33,8 @@ public class CustomDialog extends Dialog {
         positiveButton = (Button) mView.findViewById(R.id.positiveButton);
         negativeButton = (Button) mView.findViewById(R.id.negativeButton);
         super.setContentView(mView);
+
+
     }
 
     public String  getSettingText(){
