@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <!--<TextView-->
         <!--android:id="@+id/title"-->
@@ -25,22 +26,27 @@
         android:id="@+id/ipAddress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:gravity="left|center"
-        android:hint="ip地址"
-        android:background="@drawable/bg_edittext"/>
+        android:hint=" ip地址"
+        android:textColorHint="@color/grey"
+        android:background="@drawable/bg_edittext"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"/>
     <EditText
         android:id="@+id/port"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:gravity="left|center"
-        android:hint="端口号"
-        android:background="@drawable/bg_edittext"/>
+        android:hint=" 端口号"
+        android:textColorHint="@color/grey"
+        android:background="@drawable/bg_edittext"
+        android:textColor="@color/black"/>
     <!-- </LinearLayout> -->
 
 
@@ -57,7 +63,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
              android:text="确定"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@color/blue"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+           />
 
         <Button
             android:id="@+id/negativeButton"
@@ -65,7 +75,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20.0dip"
            android:text="取消"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@color/blue"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
     </LinearLayout>
 
 </LinearLayout>
