@@ -34,6 +34,7 @@
 
 
     <ListView
+        android:listSelector="@color/red"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
