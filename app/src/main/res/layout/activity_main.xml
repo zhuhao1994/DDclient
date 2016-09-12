@@ -11,7 +11,8 @@
        android:layout_weight="10"
        android:id="@+id/fragment_container"
        android:background="#ffdab9"
-       android:layout_marginTop="4dp">
+       android:layout_marginTop="4dp"
+       android:orientation="vertical">
 
    </LinearLayout>
 
