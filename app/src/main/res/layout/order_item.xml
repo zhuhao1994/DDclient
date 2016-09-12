@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingBottom="4dp"
-        android:background="#fff5ee">
+        android:background="#fff5ee"
+        android:layout_marginBottom="1dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,110 +56,10 @@
             android:text="2016-09-12"
             android:textColor="@color/black"/>
     </LinearLayout>
-    <LinearLayout
+
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="#fff5ee"
-        android:layout_marginTop="1dp"
-        >
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="90dp"
-            android:src="@drawable/book_test"
-         />
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="JAVA核心技术:卷I基础知识"
-                android:textColor="@color/black"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="x"
-                    android:textColor="@color/black"
-                   />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30.36"
-                    android:textColor="@color/red"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-
-                    />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="#fff5ee">
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="90dp"
-            android:src="@drawable/book_test"
-            />
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="JAVA核心技术:卷I基础知识"
-                android:textColor="@color/black"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="x"
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30.36"
-                    android:textColor="@color/red"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-
-                    />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:id="@+id/listView"
+        ></ListView>
 </LinearLayout>
