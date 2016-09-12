@@ -77,9 +77,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.bt3:
+<<<<<<< HEAD
                 OrderListFragment orderList = new OrderListFragment();
                 orderList.setContext(MainActivity.this);
                 chageView(orderList);
+=======
+                OrderListFragment orderListFragment = new OrderListFragment();
+                orderListFragment.setContext(MainActivity.this);
+                chageView(orderListFragment);
+>>>>>>> origin/master
                 break;
             case R.id.bt4:
                 OrderConfirmFragment orderConfirm = new OrderConfirmFragment();

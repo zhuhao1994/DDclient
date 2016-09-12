@@ -43,7 +43,7 @@ public class OrderListFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 2;
+            return 5;
         }
 
         @Override
@@ -60,6 +60,33 @@ public class OrderListFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(context);
             LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.order_item,null);
+            ListView listView = (ListView) linearLayout.findViewById(R.id.listView);
+            OrderBookAdapter orderBookAdapter = new OrderBookAdapter();
+            listView.setAdapter(orderBookAdapter);
+            return linearLayout;
+        }
+    }
+    class OrderBookAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return 1;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.order_book_item,null);
             return linearLayout;
         }
     }
