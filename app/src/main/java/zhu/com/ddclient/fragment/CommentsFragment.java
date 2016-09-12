@@ -1,54 +1,42 @@
 package zhu.com.ddclient.fragment;
 
+
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
-import zhu.com.ddclient.R;
-import zhu.com.ddclient.activity.MainActivity.ShowDetailFragment;
 import zhu.com.ddclient.myinterface.ShowFragment;
+import zhu.com.ddclient.R;
 
 /**
- * Created by zhu on 2016/9/8.
+ * Created by zhu on 2016/9/12.
  */
-public class HomeFragment extends Fragment implements AdapterView.OnItemClickListener {
-    private ListView lv = null;   //书目信息列表
+public class CommentsFragment extends Fragment {
     private Context context;
-    private BooKListAdapter adapter = null;
-    private ShowFragment showDetail = null;
-    public void setShowDetail(ShowDetailFragment showDetail){
-        this.showDetail = showDetail;
-    }
+    private CommentsAdapter adapter = null;
+    private ListView lv = null;
     public void setContext(Context context){
         this.context = context;
     }
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home,container,false);
-        adapter = new BooKListAdapter();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.comments_fragment,container,false);
         lv = (ListView) root.findViewById(R.id.listView);
+        adapter = new CommentsAdapter();
         lv.setAdapter(adapter);
-        lv.setOnItemClickListener(this);
         return root;
     }
-
-    //监听listview
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-          showDetail.show();
-    }
-
-    class BooKListAdapter extends BaseAdapter {
+    class CommentsAdapter extends BaseAdapter {
         public int getCount() {
-            return 10;
+            return 8;
         }
         public Object getItem(int position) {
             return 1;
@@ -58,7 +46,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         }
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            LinearLayout lineLayout = (LinearLayout) inflater.inflate(R.layout.book_item,null);
+            LinearLayout lineLayout = (LinearLayout) inflater.inflate(R.layout.comments_item,null);
             return lineLayout;
         }
     }

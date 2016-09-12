@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.fragment.CartFragment;
+import zhu.com.ddclient.fragment.CommentsFragment;
 import zhu.com.ddclient.fragment.DetailFragment;
 import zhu.com.ddclient.fragment.HomeFragment;
 import zhu.com.ddclient.fragment.OrderConfirmFragment;
 import zhu.com.ddclient.fragment.OrderListFragment;
+import zhu.com.ddclient.myinterface.ShowFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout fragment_container = null;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
     }
     //初始化888888888
     protected void initView(){
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         HomeFragment home = new HomeFragment();
         home.setContext(MainActivity.this);
+        home.setShowDetail(new ShowDetailFragment());
         chageView(home);
     }
     //切换fragment
@@ -56,17 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ft.commit();
     }
 
-    //书籍详细信息
-    public void listItemClick(View v){
-        Toast.makeText(getApplicationContext(), "!!!!", Toast.LENGTH_LONG).show();
-    }
     //监听函数
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt1:
-
                 HomeFragment home = new HomeFragment();
                 home.setContext(MainActivity.this);
+                home.setShowDetail(new ShowDetailFragment());
                 chageView(home);
                 break;
             case R.id.bt2:
@@ -77,15 +78,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.bt3:
-<<<<<<< HEAD
-                OrderListFragment orderList = new OrderListFragment();
-                orderList.setContext(MainActivity.this);
-                chageView(orderList);
-=======
+
                 OrderListFragment orderListFragment = new OrderListFragment();
                 orderListFragment.setContext(MainActivity.this);
                 chageView(orderListFragment);
->>>>>>> origin/master
+
                 break;
             case R.id.bt4:
                 OrderConfirmFragment orderConfirm = new OrderConfirmFragment();
@@ -95,6 +92,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt5:
 
                 break;
+        }
+    }
+
+
+    //显示CommentsFragment
+    public class ShowCommentsFragment implements ShowFragment{
+        public void show() {
+            CommentsFragment commentsFragment = new CommentsFragment();
+            commentsFragment.setContext(MainActivity.this);
+            chageView(commentsFragment);
+        }
+    }
+
+    //显示DetailFragment
+    public class ShowDetailFragment implements ShowFragment{
+        public void show() {
+            DetailFragment detailFragment = new DetailFragment();
+            detailFragment.setShowComments(new ShowCommentsFragment());
+            Toast.makeText(getApplicationContext(), "AAA", Toast.LENGTH_LONG).show();
+            chageView(detailFragment);
         }
     }
 }

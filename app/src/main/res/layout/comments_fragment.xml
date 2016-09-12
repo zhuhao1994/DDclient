@@ -7,7 +7,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#fff5ee"
-        android:layout_marginBottom="2dp">
+        android:layout_marginBottom="2dp"
+        android:padding="3dp">
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -27,4 +28,10 @@
                 android:text="Java技术核心:卷1基础知识"/>
         </LinearLayout>
     </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="2dp"
+        android:id="@+id/listView">
+    </ListView>
 </LinearLayout>
