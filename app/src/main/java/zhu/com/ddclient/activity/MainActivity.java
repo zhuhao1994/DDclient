@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.fragment.CartFragment;
+import zhu.com.ddclient.fragment.DetailFragment;
 import zhu.com.ddclient.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,16 +58,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.bt1:
                 HomeFragment home = new HomeFragment();
-                home.setContext(MainActivity.this);
+               home.setContext(MainActivity.this);
                 chageView(home);
                 break;
             case R.id.bt2:
-                CartFragment cart = new CartFragment();
+                DetailFragment detail = new DetailFragment();
 
-                chageView(cart);
+                chageView(detail);
                 break;
             case R.id.bt3:
-
+                CartFragment cart = new CartFragment();
+                cart.setContext(MainActivity.this);
+                chageView(cart);
                 break;
             case R.id.bt4:
 

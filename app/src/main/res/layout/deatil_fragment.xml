@@ -14,15 +14,7 @@
             android:layout_centerVertical="true"
             android:textSize="18dp"
             android:textColor="#EEEEEE"
-            android:text="购物车"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="删除"
-            android:textSize="18dp"
-            android:textColor="#EEEEEE"
-            android:background="#428BCA"
-            android:layout_alignParentRight="true"/>
+            android:text="书籍详细信息"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
