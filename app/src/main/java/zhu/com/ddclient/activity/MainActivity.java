@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.fragment.CartFragment;
@@ -53,23 +54,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ft.commit();
     }
 
+    //书籍详细信息
+    public void listItemClick(View v){
+        Toast.makeText(getApplicationContext(), "!!!!", Toast.LENGTH_LONG).show();
+    }
     //监听函数
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt1:
+
                 HomeFragment home = new HomeFragment();
-               home.setContext(MainActivity.this);
+                home.setContext(MainActivity.this);
                 chageView(home);
                 break;
             case R.id.bt2:
-                DetailFragment detail = new DetailFragment();
 
-                chageView(detail);
-                break;
-            case R.id.bt3:
                 CartFragment cart = new CartFragment();
                 cart.setContext(MainActivity.this);
                 chageView(cart);
+
+                break;
+            case R.id.bt3:
+
                 break;
             case R.id.bt4:
 
