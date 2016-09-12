@@ -15,6 +15,7 @@ import zhu.com.ddclient.fragment.CartFragment;
 import zhu.com.ddclient.fragment.DetailFragment;
 import zhu.com.ddclient.fragment.HomeFragment;
 import zhu.com.ddclient.fragment.OrderConfirmFragment;
+import zhu.com.ddclient.fragment.OrderListFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout fragment_container = null;
@@ -76,7 +77,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.bt3:
-
+                OrderListFragment orderListFragment = new OrderListFragment();
+                orderListFragment.setContext(MainActivity.this);
+                chageView(orderListFragment);
                 break;
             case R.id.bt4:
                 OrderConfirmFragment orderConfirm = new OrderConfirmFragment();
