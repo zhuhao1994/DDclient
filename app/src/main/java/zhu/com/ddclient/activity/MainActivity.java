@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
     //显示DetailFragment
     public class ShowDetailFragment implements ShowFragment{
         public void show() {
