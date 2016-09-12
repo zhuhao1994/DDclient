@@ -46,6 +46,7 @@ public class CartFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(context);
             LinearLayout lineLayout = (LinearLayout) inflater.inflate(R.layout.cart_item,null);
+
             return lineLayout;
         }
     }

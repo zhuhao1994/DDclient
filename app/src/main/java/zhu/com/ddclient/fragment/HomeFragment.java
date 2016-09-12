@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -15,7 +16,7 @@ import zhu.com.ddclient.R;
 /**
  * Created by zhu on 2016/9/8.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements AdapterView.OnItemClickListener {
     private ListView lv = null;   //书目信息列表
     private Context context;
     private BooKListAdapter adapter = null;
@@ -30,8 +31,15 @@ public class HomeFragment extends Fragment {
         adapter = new BooKListAdapter();
         lv = (ListView) root.findViewById(R.id.listView);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(this);
         return root;
     }
+
+    //监听listview
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
     class BooKListAdapter extends BaseAdapter {
         public int getCount() {
             return 10;
@@ -44,8 +52,9 @@ public class HomeFragment extends Fragment {
         }
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            LinearLayout lineLayout = (LinearLayout) inflater.inflate(R.layout.detail_item,null);
+            LinearLayout lineLayout = (LinearLayout) inflater.inflate(R.layout.book_item,null);
             return lineLayout;
         }
     }
+
 }
