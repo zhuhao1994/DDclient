@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="#fff5ee">
+        android:background="#fff5ee"
+        android:layout_marginTop="1dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,8 +44,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingBottom="4dp"
-        android:background="#fff5ee"
-        android:layout_marginBottom="1dp">
+        android:background="#fff5ee">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/listView"
         ></ListView>
 </LinearLayout>

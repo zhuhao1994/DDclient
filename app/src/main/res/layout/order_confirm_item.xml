@@ -12,7 +12,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="70dp"
-            android:src="@drawable/book_test"/>
+            android:src="@drawable/book_test"
+            android:padding="5dp"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="4"
