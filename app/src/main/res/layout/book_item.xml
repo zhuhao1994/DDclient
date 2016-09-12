@@ -7,7 +7,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="#fff5ee"
-    android:layout_marginBottom="2dp">
+    android:layout_marginBottom="2dp"
+    android:padding="5dp">
     <ImageView
         android:layout_width="0dp"
         android:layout_weight="1"
