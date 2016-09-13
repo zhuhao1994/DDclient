@@ -57,6 +57,8 @@ public class DetailFragment extends Fragment {
         TextView stockstatusTV = (TextView) root.findViewById(R.id.stockstatus);
         TextView sellVolumeTV = (TextView) root.findViewById(R.id.sellVolume);
         ImageView bookImgIV = (ImageView)root.findViewById(R.id.bookImg);
+        TextView introductionTV = (TextView) root.findViewById(R.id.introduction);
+        TextView catalogTV = (TextView) root.findViewById(R.id.catalog);
         try {
             bookNameTV.setText(bookInfo.getString("bookName"));
             priceTV.setText(bookInfo.getString("price"));
@@ -65,7 +67,8 @@ public class DetailFragment extends Fragment {
             publisherTV.setText(bookInfo.getString("publisher"));
             stockstatusTV.setText(bookInfo.getString("stockstatus"));
             sellVolumeTV.setText(bookInfo.getString("salesVolume"));
-
+            introductionTV.setText(bookInfo.getString("introduction"));
+            catalogTV.setText(bookInfo.getString("catalog"));
             String  url = BitmapUtil.BASE_URL+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
             asynsetImage(url,bookImgIV);
         }catch (Exception e){
