@@ -170,6 +170,19 @@
                android:layout_weight="1"
                android:layout_column="1"
                android:paddingLeft="15dp"
+               android:id="@+id/introduction"
+               android:textColor="#000000" />
+       </TableRow>
+       <TableRow
+           android:paddingBottom="5dp"
+           android:paddingTop="5dp"
+           android:layout_marginTop="1dp"
+           android:background="#EEEEEE">
+           <TextView
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_column="1"
+               android:paddingLeft="15dp"
                android:text="书籍完整目录"
                android:textColor="#000000" />
            <ImageView
@@ -177,6 +190,19 @@
                android:layout_height="20px"
                android:src="@drawable/right_btn"
                />
+       </TableRow>
+       <TableRow
+           android:paddingBottom="5dp"
+           android:paddingTop="5dp"
+           android:layout_marginTop="1dp"
+           android:background="#EEEEEE">
+           <TextView
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_column="1"
+               android:paddingLeft="15dp"
+               android:id="@+id/catalog"
+               android:textColor="#000000" />
        </TableRow>
    </TableLayout>
     <RelativeLayout
