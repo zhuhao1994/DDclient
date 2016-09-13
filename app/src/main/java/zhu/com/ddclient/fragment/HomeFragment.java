@@ -125,6 +125,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
             }
             return lineLayout;
         }
+
         //异步加载图片资源
         public void asynsetImage(String url,final ImageView iv){
             new AsyncTask<String, Void, Bitmap>() {
