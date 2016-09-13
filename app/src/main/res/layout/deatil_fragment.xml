@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#555555">
+    android:scrollbars="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -20,8 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#EEEEEE"
-        android:layout_marginBottom="2dp">
+        android:background="#fff5ee"
+        android:layout_marginBottom="1dp">
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -58,159 +58,180 @@
                 style="?android:attr/ratingBarStyleSmall" />
         </LinearLayout>
     </LinearLayout>
-   <TableLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:background="#000000">
-       <TableRow
-           android:layout_marginTop="2dp"
-           android:background="#EEEEEE"
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:text="作者"
-               android:textColor="#000000" />
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="3"
-               android:layout_column="1"
-               android:id="@+id/author"
-               android:text="(美)昊斯特曼.叶乃文,杜永萍 译"
-               android:textColor="#000000"/>
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:text="出版社"
-               android:textColor="#000000" />
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="3"
-               android:layout_column="1"
-               android:id="@+id/publisher"
-               android:text="机械工业出版社"
-               android:textColor="#000000"/>
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:text="库存状态"
-               android:textColor="#000000" />
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="3"
-               android:layout_column="1"
-               android:text="有货"
-               android:id="@+id/stockstatus"
-               android:textColor="#000000"/>
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:text="累计销量"
-               android:textColor="#000000" />
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="3"
-               android:layout_column="1"
-               android:text="100万"
-               android:id="@+id/sellVolume"
-               android:textColor="#000000"/>
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:text="书籍简要概述"
-               android:textColor="#000000" />
-           <ImageView
-              android:layout_width="20px"
-               android:layout_height="20px"
-               android:src="@drawable/right_btn"
-               />
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:id="@+id/introduction"
-               android:textColor="#000000" />
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:text="书籍完整目录"
-               android:textColor="#000000" />
-           <ImageView
-               android:layout_width="20px"
-               android:layout_height="20px"
-               android:src="@drawable/right_btn"
-               />
-       </TableRow>
-       <TableRow
-           android:paddingBottom="5dp"
-           android:paddingTop="5dp"
-           android:layout_marginTop="1dp"
-           android:background="#EEEEEE">
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_column="1"
-               android:paddingLeft="15dp"
-               android:id="@+id/catalog"
-               android:textColor="#000000" />
-       </TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:layout_marginTop="2dp"
+                        android:background="#fff5ee"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:paddingLeft="15dp"
+                            android:text="作者"
+                            android:textColor="#000000" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_column="1"
+                            android:id="@+id/author"
+                            android:text="(美)昊斯特曼.叶乃文,杜永萍 译"
+                            android:textColor="#000000"/>
+                    </TableRow>
+                    <TableRow
+                        android:background="#fff5ee"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:paddingLeft="15dp"
+                            android:text="出版社"
+                            android:textColor="#000000" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_column="1"
+                            android:id="@+id/publisher"
+                            android:text="机械工业出版社"
+                            android:textColor="#000000"/>
+                    </TableRow>
+                    <TableRow
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp"
+                        android:background="#fff5ee">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:paddingLeft="15dp"
+                            android:text="库存状态"
+                            android:textColor="#000000" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_column="1"
+                            android:text="有货"
+                            android:id="@+id/stockstatus"
+                            android:textColor="#000000"/>
+                    </TableRow>
+                    <TableRow
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp"
+                        android:background="#fff5ee">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:paddingLeft="15dp"
+                            android:text="累计销量"
+                            android:textColor="#000000" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_column="1"
+                            android:text="100万"
+                            android:id="@+id/sellVolume"
+                            android:textColor="#000000"/>
+                    </TableRow>
+                    <TableRow
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp"
+                        android:background="#fff5ee"
+                        android:id="@+id/tr_introduction_btn">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:paddingLeft="15dp"
+                            android:text="书籍简要概述"
+                            android:textColor="#000000" />
+                        <ImageView
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:src="@drawable/right_btn"
+                            />
+                    </TableRow>
+                    <TableRow
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp"
+                        android:background="#fff5ee"
+                        android:visibility="gone"
+                        android:id="@+id/tr_introduction"
+                        android:paddingLeft="20dp">
+                        <TextView
+                            android:padding="10dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:id="@+id/introduction"
+                            android:textColor="#000000" />
+                    </TableRow>
+                    <TableRow
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp"
+                        android:background="#fff5ee"
+                        android:id="@+id/tr_catalog_btn"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:paddingLeft="15dp"
+                            android:text="书籍完整目录"
+                            android:textColor="#000000" />
+                        <ImageView
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:src="@drawable/right_btn"
+                            />
+                    </TableRow>
+                    <TableRow
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="1dp"
+                        android:background="#fff5ee"
+                        android:visibility="gone"
+                        android:id="@+id/tr_catalog"
+                        android:paddingLeft="20dp">
+                        <TextView
+                            android:padding="10dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:id="@+id/catalog"
+                            android:textColor="#000000" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
-
-   </TableLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:background="#EEEEEE">
         <LinearLayout
             android:layout_width="wrap_content"

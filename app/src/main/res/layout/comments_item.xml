@@ -3,26 +3,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff5ee">
+    android:background="#fff5ee"
+    android:paddingLeft="10dp">
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="wrap_content"
+       >
     <TextView
         android:padding="5dp"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="关羽"
-        android:textSize="22dp"
+        android:id="@+id/customerName"
         android:textColor="@color/grey"/>
     <RatingBar
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:numStars="5"
+        android:id="@+id/star"
         android:rating="3"
-        style="?android:attr/ratingBarStyleIndicator" />
+        style="?android:attr/ratingBarStyleSmall" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -32,7 +34,9 @@
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="我是一个IT工作者，已经有一段时间了"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:id="@+id/content"
             android:textColor="@color/black"/>
     </RelativeLayout>
     <LinearLayout
@@ -44,6 +48,7 @@
             android:padding="5dp"
             android:layout_height="wrap_content"
             android:text="2016-11-19 12:53:22"
+            android:id="@+id/contentDate"
             android:textColor="@color/grey"/>
     </LinearLayout>
 </LinearLayout>

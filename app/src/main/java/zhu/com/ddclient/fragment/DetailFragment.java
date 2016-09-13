@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -42,13 +43,13 @@ public class DetailFragment extends Fragment {
         detail_btn = (Button)root.findViewById(R.id.detail_btn);
         detail_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showComments.show();
+                showComments.show(bookInfo);
             }
         });
         return root;
     }
     //初始化
-    public void initView(View root){
+    public void initView(final View root){
         TextView bookNameTV = (TextView) root.findViewById(R.id.bookName);
         TextView priceTV = (TextView) root.findViewById(R.id.price);
         RatingBar startnumRB = (RatingBar) root.findViewById(R.id.starnum);
@@ -57,8 +58,8 @@ public class DetailFragment extends Fragment {
         TextView stockstatusTV = (TextView) root.findViewById(R.id.stockstatus);
         TextView sellVolumeTV = (TextView) root.findViewById(R.id.sellVolume);
         ImageView bookImgIV = (ImageView)root.findViewById(R.id.bookImg);
-        TextView introductionTV = (TextView) root.findViewById(R.id.introduction);
-        TextView catalogTV = (TextView) root.findViewById(R.id.catalog);
+        final TextView introductionTV = (TextView) root.findViewById(R.id.introduction);
+        final TextView catalogTV = (TextView) root.findViewById(R.id.catalog);
         try {
             bookNameTV.setText(bookInfo.getString("bookName"));
             priceTV.setText(bookInfo.getString("price"));
@@ -74,6 +75,27 @@ public class DetailFragment extends Fragment {
         }catch (Exception e){
 
         }
+
+        root.findViewById(R.id.tr_catalog_btn).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                View tr = root.findViewById(R.id.tr_catalog);
+                if(tr.getVisibility() == View.VISIBLE)
+                    tr.setVisibility(View.GONE);
+                else {
+                    tr.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        root.findViewById(R.id.tr_introduction_btn).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                View tr = root.findViewById(R.id.tr_introduction);
+                if(tr.getVisibility() == View.VISIBLE)
+                    tr.setVisibility(View.GONE);
+                else {
+                    tr.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 

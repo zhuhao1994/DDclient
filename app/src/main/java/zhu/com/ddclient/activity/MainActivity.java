@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment_container,fragment);
+        ft.addToBackStack(null);
         ft.commit();
     }
 
@@ -101,12 +102,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //显示CommentsFragment
     public class ShowCommentsFragment implements ShowFragment{
         public void show() {
-            CommentsFragment commentsFragment = new CommentsFragment();
-            commentsFragment.setContext(MainActivity.this);
-            chageView(commentsFragment);
+
         }
         public void show(JSONObject jsonStr) {
-
+            CommentsFragment commentsFragment = new CommentsFragment();
+            commentsFragment.setContext(MainActivity.this);
+            commentsFragment.setBookinfo(jsonStr);
+            chageView(commentsFragment);
         }
     }
 
