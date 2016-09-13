@@ -40,8 +40,9 @@ public class BitmapUtil {
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            return bitmap;
         }
-        return bitmap;
     }
         
 }
