@@ -204,6 +204,9 @@
                android:id="@+id/catalog"
                android:textColor="#000000" />
        </TableRow>
+
+
+
    </TableLayout>
     <RelativeLayout
         android:layout_width="match_parent"
