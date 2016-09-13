@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.fragment.CartFragment;
 import zhu.com.ddclient.fragment.CommentsFragment;
@@ -103,14 +105,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             commentsFragment.setContext(MainActivity.this);
             chageView(commentsFragment);
         }
+        public void show(JSONObject jsonStr) {
+
+        }
     }
 
 
     //显示DetailFragment
     public class ShowDetailFragment implements ShowFragment{
         public void show() {
+
+        }
+        public void show(JSONObject jsonobj) {
             DetailFragment detailFragment = new DetailFragment();
             detailFragment.setShowComments(new ShowCommentsFragment());
+            detailFragment.setBookInfo(jsonobj);
             chageView(detailFragment);
         }
     }
