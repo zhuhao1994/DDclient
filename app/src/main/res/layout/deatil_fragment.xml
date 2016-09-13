@@ -202,6 +202,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/corner_btn2"
                 android:text="查看评论  "
+                android:id="@+id/detail_btn"
                 android:layout_marginBottom="10dp"/>
         </LinearLayout>
     </RelativeLayout>
