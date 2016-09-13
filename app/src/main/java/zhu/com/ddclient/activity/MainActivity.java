@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void show() {
             DetailFragment detailFragment = new DetailFragment();
             detailFragment.setShowComments(new ShowCommentsFragment());
-            Toast.makeText(getApplicationContext(), "AAA", Toast.LENGTH_LONG).show();
             chageView(detailFragment);
         }
     }
