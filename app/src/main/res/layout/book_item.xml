@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="100dp"
-        android:src="@drawable/book_test"/>
+        android:id="@+id/bookImg"/>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="4"
@@ -26,6 +26,7 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:textColor="#000000"
+            android:id="@+id/bookName"
             android:text="Java技术核心:卷1基础知识"/>
         <TextView
             android:layout_width="match_parent"
@@ -33,13 +34,14 @@
             android:layout_weight="1"
             android:text="￥75.00"
             android:textColor="#000000"
+            android:id="@+id/price"
             android:layout_marginBottom="5dp"/>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:numStars="5"
             android:rating="3"
+            android:id="@+id/starnum"
             style="?android:attr/ratingBarStyleSmall" />
     </LinearLayout>
 </LinearLayout>
