@@ -52,6 +52,7 @@
                 android:textCursorDrawable="@null"
                 android:singleLine="true"
                 android:id="@+id/uid"
+                android:text="zhangfei"
                 />
             <TextView android:layout_width="40dp"
                 android:layout_height="wrap_content"
@@ -73,6 +74,7 @@
                 android:textCursorDrawable="@null"
                 android:singleLine="true"
                 android:id="@+id/password"
+                android:text="zhangfei"
                 />
         </TableRow>
         <TableRow android:layout_margin="10dp">

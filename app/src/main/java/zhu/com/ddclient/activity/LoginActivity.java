@@ -18,8 +18,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.oracle.dd.tool.json.request.entity.LoginRequestParams;
+import com.oracle.dd.tool.json.response.entity.LoginResponseParams;
+
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.util.BitmapUtil;
+import zhu.com.ddclient.util.CommonUtil;
 import zhu.com.ddclient.util.HttpUtil;
 
 public class LoginActivity extends AppCompatActivity {
@@ -66,12 +79,56 @@ public class LoginActivity extends AppCompatActivity {
         String password = editText2.getText().toString();
         String code = editText3.getText().toString();
         if(validCheck(uid,password,code)){
-            Intent intent = new Intent();
-            intent.setClass(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+            LoginRequestParams params = new LoginRequestParams();
+            params.setCode(code);
+            params.setPwd(password);
+            params.setUid(uid);
+            LoginResponseParams answer = requestServerData(params);
+            if(answer.getIsOk() == true){
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+            else if(answer.getIsOk() == false){
+                showToast(answer.getErrorinfo());
+            }
+
         }
     }
+    protected LoginResponseParams requestServerData(LoginRequestParams loginRequestParams){
+        LoginResponseParams responseParams = new LoginResponseParams();
+        JSONArray responseArray = null;
+        Map<String,String> params = new HashMap<>();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("code",loginRequestParams.getCode());
+            jsonObject.put("pwd",loginRequestParams.getPwd());
+            jsonObject.put("uid",loginRequestParams.getUid());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        params.put("params",jsonObject.toString());
 
+        try {
+             String s = HttpUtil.postRequest(getApplicationContext(),HttpUtil.getRequestUrl(this)+"/login.json",params);
+            JSONObject object = new JSONObject(s);
+            boolean isOK = false;
+            try {
+                isOK = object.getBoolean("isOk");
+
+            }catch (JSONException jse){
+                 return responseParams;
+            }
+            if(isOK == true)
+                responseParams.setCusid(object.getString("cusid"));
+            else
+                responseParams.setErrorinfo(object.getString("errorinfo"));
+            responseParams.setIsOk(isOK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return responseParams;
+    }
     public void dialogBtnClick(View v) {
         dialog = new CustomDialog(LoginActivity.this);
         dialog.setTitle("配置选项");
@@ -113,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
         new AsyncTask<String, Void, Bitmap>() {
             @Override
             protected Bitmap doInBackground(String... params) {
-                Bitmap bitmap =  BitmapUtil.getHttpBitmap(params[0]);
+                Bitmap bitmap =  BitmapUtil.getHttpBitmap(getApplicationContext(),params[0]);
                 return  bitmap;
             }
             @Override
@@ -138,5 +195,11 @@ public class LoginActivity extends AppCompatActivity {
         else
             result = true;
         return result;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        CommonUtil.saveValueToLocal(getApplicationContext(),"Set-Cookie","");
     }
 }
