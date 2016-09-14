@@ -85,6 +85,8 @@ public class LoginActivity extends AppCompatActivity {
             params.setUid(uid);
             LoginResponseParams answer = requestServerData(params);
             if(answer.getIsOk() == true){
+                CommonUtil.saveValueToLocal(getApplicationContext(),"uid",answer.getCusid());
+                showToast("欢迎"+CommonUtil.getValueFromLocal(getApplicationContext(),"uid"));
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -176,6 +178,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Bitmap bitmap) {
                 super.onPostExecute(bitmap);
+                if(bitmap == null){
+                    showToast("无法连接到服务器");
+                }
                 iv.setImageBitmap(bitmap);
             }
         }.execute(url);
