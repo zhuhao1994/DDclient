@@ -36,11 +36,16 @@ public class CustomDialog extends Dialog {
 
 
     }
-
-    public String  getSettingText(){
-        return editText1.getText()+"||"+editText2.getText();
+    public void setSettingText(String ip,String port){
+        editText1.setText(ip);
+        editText2.setText(port);
     }
-
+    public String getIpAddress(){
+        return editText1.getText()+"";
+    }
+    public String getPort(){
+        return editText2.getText()+"";
+    }
     @Override
     public void setContentView(int layoutResID) {
     }

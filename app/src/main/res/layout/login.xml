@@ -48,7 +48,11 @@
                 android:layout_marginLeft="18dp"
                 android:background="@drawable/bg_edittext"
                 android:enabled="true"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textCursorDrawable="@null"
+                android:singleLine="true"
+                android:id="@+id/uid"
+                />
             <TextView android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text=""/>
@@ -65,7 +69,11 @@
                 android:layout_marginLeft="18dp"
                 android:background="@drawable/bg_edittext"
                 android:enabled="true"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textCursorDrawable="@null"
+                android:singleLine="true"
+                android:id="@+id/password"
+                />
         </TableRow>
         <TableRow android:layout_margin="10dp">
             <TextView android:layout_width="wrap_content"
@@ -76,7 +84,7 @@
                 android:paddingLeft="20dp"
                />
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="10dp"
@@ -86,11 +94,18 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edittext"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="8dp"/>
+                    android:layout_marginLeft="8dp"
+                    android:textCursorDrawable="@null"
+                    android:singleLine="true"
+                    android:id="@+id/code"
+                    />
                 <ImageView
                     android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/vcode"/>
+                    android:layout_height="20dp"
+                    android:id="@+id/codeView"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    />
             </LinearLayout>
         </TableRow>
         <TableRow>
