@@ -11,7 +11,7 @@ import java.net.URL;
  * Created by zhu on 2016/9/13.
  */
 public class BitmapUtil {
-    public static final String BASE_URL = "http://172.19.22.17:8080/";
+    public static final String BASE_URL = "http://10.0.2.2:8080/";
     /**
      * 获取网落图片资源 
      * @param url

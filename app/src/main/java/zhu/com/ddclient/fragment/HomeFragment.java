@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         jsonArray.put(jsonObject);
         params.put("params",jsonObject.toString());
         try {
-            String s = HttpUtil.postRequest("http://172.19.22.17:8080/books.json",params);
+            String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/books.json",params);
             Log.i("服务器数据: ",s);
             serverData =  new JSONArray(s);
             Log.i("长度: ",serverData.length()+"");
@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
             ImageView bookImgIV = (ImageView) lineLayout.findViewById(R.id.bookImg);
             try {
                 JSONObject bookInfo = (JSONObject) serverData.get(position);
-                String  url = BitmapUtil.BASE_URL+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
+                String  url = HttpUtil.getRequestUrl(context)+"/"+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
                 asynsetImage(url,bookImgIV);
                 bookNameTV.setText(bookInfo.getString("bookName"));
                 priceTV.setText(bookInfo.getString("price"));

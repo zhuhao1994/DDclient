@@ -83,7 +83,7 @@ public class CommentsFragment extends Fragment {
         jsonArray.put(jsonObject);
         params.put("params",jsonObject.toString());
         try {
-            String s = HttpUtil.postRequest("http://172.19.22.17:8080/comments.json",params);
+            String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/comments.json",params);
             commentsList =  new JSONArray(s);
             Log.i("长度: ",commentsList.length()+"");
         } catch (Exception e) {

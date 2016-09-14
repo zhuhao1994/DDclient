@@ -1,5 +1,8 @@
 package zhu.com.ddclient.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -23,7 +26,7 @@ public class HttpUtil
 {
     // 创建HttpClient对象
     public static HttpClient httpClient = new DefaultHttpClient();
-    public static final String BASE_URL = "http://172.19.22.17:8080/";
+    public static final String BASE_URL = "http:/10.0.2.2:8080/";
     /**
      *
      * @param url 发送请求的URL
@@ -97,5 +100,11 @@ public class HttpUtil
                 });
         new Thread(task).start();
         return task.get();
+    }
+    public static String getRequestUrl(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("my",Context.MODE_WORLD_READABLE);
+        String ipAddress =sharedPreferences.getString("ipAddress","");
+        String port = sharedPreferences.getString("port","");
+        return "http://"+ipAddress+":"+port;
     }
 }
