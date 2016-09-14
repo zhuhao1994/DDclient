@@ -18,6 +18,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.oracle.dd.tool.json.request.entity.LoginRequestParams;
+import com.oracle.dd.tool.json.response.entity.LoginResponseParams;
+
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.util.BitmapUtil;
 import zhu.com.ddclient.util.HttpUtil;
@@ -66,12 +78,75 @@ public class LoginActivity extends AppCompatActivity {
         String password = editText2.getText().toString();
         String code = editText3.getText().toString();
         if(validCheck(uid,password,code)){
+            LoginRequestParams params = new LoginRequestParams();
+            params.setCode(code);
+            params.setPwd(password);
+            params.setUid(uid);
+            LoginResponseParams answer = requestServerData(params);
+            if (answer == null){
+                Log.i("answer =","返回结果对象问null");
+            }
+            else {
+                Log.i("answer ==",answer.toString());
+            }
             Intent intent = new Intent();
             intent.setClass(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+            //startActivity(intent);
         }
     }
-
+    protected LoginResponseParams requestServerData(LoginRequestParams loginRequestParams){
+        LoginResponseParams responseParams = null;
+        JSONArray responseArray = null;
+        Map<String,String> params = new HashMap<>();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("code",loginRequestParams.getCode());
+            jsonObject.put("pwd",loginRequestParams.getPwd());
+            jsonObject.put("uid",loginRequestParams.getUid());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        params.put("params",jsonObject.toString());
+        Log.i("LoginRequestParams",jsonObject.toString());
+        try {
+            Log.i("databefore",jsonObject.toString());
+             String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(this)+"/login.json",params);
+             Log.i("dataafter",s);
+//            responseArray =  new JSONArray(s);
+//            Log.i("长度: ",responseArray.length()+"");
+//            if ( responseArray.length()>0){
+//                JSONObject object = (JSONObject)responseArray.get(0);
+//                boolean isOK = false;
+//                 try {
+//                     isOK = object.getBoolean("isOk");
+//
+//                 }catch (JSONException jse){
+//                      return responseParams;
+//                }
+//                 if(isOK == true)
+//                    responseParams.setCusid(object.getString("cusid"));
+//                else
+//                    responseParams.setErrorinfo(object.getString("errorinfo"));
+//                 responseParams.setIsOk(isOK);
+//            }
+//            JSONObject object = new JSONObject(s);
+//            boolean isOK = false;
+//            try {
+//                isOK = object.getBoolean("isOk");
+//
+//            }catch (JSONException jse){
+//                 return responseParams;
+//            }
+//            if(isOK == true)
+//                responseParams.setCusid(object.getString("cusid"));
+//            else
+//                responseParams.setErrorinfo(object.getString("errorinfo"));
+//            responseParams.setIsOk(isOK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return responseParams;
+    }
     public void dialogBtnClick(View v) {
         dialog = new CustomDialog(LoginActivity.this);
         dialog.setTitle("配置选项");
