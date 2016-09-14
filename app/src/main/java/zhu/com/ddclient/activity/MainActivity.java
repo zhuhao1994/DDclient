@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void show(JSONObject jsonobj) {
             DetailFragment detailFragment = new DetailFragment();
             detailFragment.setShowComments(new ShowCommentsFragment());
+            detailFragment.setContext(MainActivity.this);
             detailFragment.setBookInfo(jsonobj);
             chageView(detailFragment);
         }

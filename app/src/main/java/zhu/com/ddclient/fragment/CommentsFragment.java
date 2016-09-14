@@ -73,14 +73,12 @@ public class CommentsFragment extends Fragment {
     //向请求服务评论数据数据
     protected void requestServerData(){
         Map<String,String> params = new HashMap<>();
-        JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("bookid",bookinfo.getString("bookId"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        jsonArray.put(jsonObject);
         params.put("params",jsonObject.toString());
         try {
             String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/comments.json",params);
