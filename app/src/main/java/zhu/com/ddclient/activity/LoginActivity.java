@@ -112,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.i("databefore",jsonObject.toString());
              String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(this)+"/login.json",params);
              Log.i("dataafter",s);
+
 //            responseArray =  new JSONArray(s);
 //            Log.i("长度: ",responseArray.length()+"");
 //            if ( responseArray.length()>0){
