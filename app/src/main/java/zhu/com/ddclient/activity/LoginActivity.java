@@ -32,6 +32,7 @@ import java.util.Map;
 
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.util.BitmapUtil;
+import zhu.com.ddclient.util.CommonUtil;
 import zhu.com.ddclient.util.HttpUtil;
 
 public class LoginActivity extends AppCompatActivity {
@@ -83,19 +84,19 @@ public class LoginActivity extends AppCompatActivity {
             params.setPwd(password);
             params.setUid(uid);
             LoginResponseParams answer = requestServerData(params);
-            if (answer == null){
-                Log.i("answer =","返回结果对象问null");
+            if(answer.getIsOk() == true){
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
-            else {
-                Log.i("answer ==",answer.toString());
+            else if(answer.getIsOk() == false){
+                showToast(answer.getErrorinfo());
             }
-            Intent intent = new Intent();
-            intent.setClass(LoginActivity.this, MainActivity.class);
-            //startActivity(intent);
+
         }
     }
     protected LoginResponseParams requestServerData(LoginRequestParams loginRequestParams){
-        LoginResponseParams responseParams = null;
+        LoginResponseParams responseParams = new LoginResponseParams();
         JSONArray responseArray = null;
         Map<String,String> params = new HashMap<>();
         JSONObject jsonObject = new JSONObject();
@@ -107,42 +108,22 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         params.put("params",jsonObject.toString());
-        Log.i("LoginRequestParams",jsonObject.toString());
-        try {
-            Log.i("databefore",jsonObject.toString());
-             String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(this)+"/login.json",params);
-             Log.i("dataafter",s);
 
-//            responseArray =  new JSONArray(s);
-//            Log.i("长度: ",responseArray.length()+"");
-//            if ( responseArray.length()>0){
-//                JSONObject object = (JSONObject)responseArray.get(0);
-//                boolean isOK = false;
-//                 try {
-//                     isOK = object.getBoolean("isOk");
-//
-//                 }catch (JSONException jse){
-//                      return responseParams;
-//                }
-//                 if(isOK == true)
-//                    responseParams.setCusid(object.getString("cusid"));
-//                else
-//                    responseParams.setErrorinfo(object.getString("errorinfo"));
-//                 responseParams.setIsOk(isOK);
-//            }
-//            JSONObject object = new JSONObject(s);
-//            boolean isOK = false;
-//            try {
-//                isOK = object.getBoolean("isOk");
-//
-//            }catch (JSONException jse){
-//                 return responseParams;
-//            }
-//            if(isOK == true)
-//                responseParams.setCusid(object.getString("cusid"));
-//            else
-//                responseParams.setErrorinfo(object.getString("errorinfo"));
-//            responseParams.setIsOk(isOK);
+        try {
+             String s = HttpUtil.postRequest(getApplicationContext(),HttpUtil.getRequestUrl(this)+"/login.json",params);
+            JSONObject object = new JSONObject(s);
+            boolean isOK = false;
+            try {
+                isOK = object.getBoolean("isOk");
+
+            }catch (JSONException jse){
+                 return responseParams;
+            }
+            if(isOK == true)
+                responseParams.setCusid(object.getString("cusid"));
+            else
+                responseParams.setErrorinfo(object.getString("errorinfo"));
+            responseParams.setIsOk(isOK);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -189,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
         new AsyncTask<String, Void, Bitmap>() {
             @Override
             protected Bitmap doInBackground(String... params) {
-                Bitmap bitmap =  BitmapUtil.getHttpBitmap(params[0]);
+                Bitmap bitmap =  BitmapUtil.getHttpBitmap(getApplicationContext(),params[0]);
                 return  bitmap;
             }
             @Override
@@ -214,5 +195,11 @@ public class LoginActivity extends AppCompatActivity {
         else
             result = true;
         return result;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        CommonUtil.saveValueToLocal(getApplicationContext(),"Set-Cookie","");
     }
 }
