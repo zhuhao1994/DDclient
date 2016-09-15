@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20131141111"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:id="@+id/ordid"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,12 +32,14 @@
                 android:layout_height="wrap_content"
                 android:text="订单总价："
                 android:textColor="@color/red"
+
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1245.25"
-                android:textColor="@color/red" />
+                android:textColor="@color/red"
+                android:id="@+id/price"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -54,7 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2016-09-12"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:id="@+id/createdate"/>
     </LinearLayout>
 
     <ListView
