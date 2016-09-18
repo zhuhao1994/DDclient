@@ -62,7 +62,7 @@ public class CommentsFragment extends Fragment {
         TextView  bookNameTV = (TextView) root.findViewById(R.id.bookName);
         try {
             bookNameTV.setText(bookinfo.getString("bookName"));
-            String  url = BitmapUtil.BASE_URL+bookinfo.getString("imagePath")+bookinfo.getString("imageName");
+            String  url = HttpUtil.getRequestUrl(context)+"/"+bookinfo.getString("imagePath")+bookinfo.getString("imageName");
             asynsetImage(url,bookImgIV);
         }catch (Exception e){
         }

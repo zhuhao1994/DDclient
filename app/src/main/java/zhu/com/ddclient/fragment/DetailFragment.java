@@ -79,7 +79,7 @@ public class DetailFragment extends Fragment {
             sellVolumeTV.setText(bookInfo.getString("salesVolume"));
             introductionTV.setText(bookInfo.getString("introduction"));
             catalogTV.setText(bookInfo.getString("catalog"));
-            String  url = BitmapUtil.BASE_URL+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
+            String  url = HttpUtil.getRequestUrl(context)+"/"+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
             asynsetImage(url,bookImgIV);
         }catch (Exception e){
 
