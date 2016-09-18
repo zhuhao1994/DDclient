@@ -73,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red"
+                    android:id="@+id/totalPrice"
                     android:text="￥ 0.00"/>
             </LinearLayout>
             <LinearLayout
@@ -84,16 +85,17 @@
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:background="@drawable/corner_btn1"
-                    android:text="修改"/>
+                    android:text="修改"
+                    android:id="@+id/update_btn"/>
                 <Button
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:background="@drawable/corner_btn1"
+                    android:id="@+id/confirm_btn"
                     android:text="下单"/>
             </LinearLayout>
         </RelativeLayout>
-
     </RelativeLayout>
 </LinearLayout>
