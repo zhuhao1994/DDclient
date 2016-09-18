@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt4:
                 OrderConfirmFragment orderConfirm = new OrderConfirmFragment();
                 orderConfirm.setContext(MainActivity.this);
+                orderConfirm.setTotal(0);
+                orderConfirm.setConfirmList(new JSONArray());
                 chageView(orderConfirm);
                 break;
             case R.id.bt5:
