@@ -1,9 +1,11 @@
 package zhu.com.ddclient.fragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,22 +14,32 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import zhu.com.ddclient.R;
 import zhu.com.ddclient.activity.MainActivity;
 import zhu.com.ddclient.myinterface.ShowFragment;
 import zhu.com.ddclient.activity.MainActivity.ShowCommentsFragment;
 import zhu.com.ddclient.util.BitmapUtil;
+import zhu.com.ddclient.util.HttpUtil;
 
 /**
  * Created by zhu on 2016/9/9.
  */
 public class DetailFragment extends Fragment {
     private ShowFragment  showComments =null;
-    private Button detail_btn = null;
     private JSONObject bookInfo = null; //书籍信息
+    private Context context;
+    public void setContext(Context context){
+        this.context = context;
+    }
     public void setShowComments(ShowCommentsFragment showComments){
         this.showComments = showComments;
     }
@@ -40,16 +52,13 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.deatil_fragment,container,false);
         initView(root);
-        detail_btn = (Button)root.findViewById(R.id.detail_btn);
-        detail_btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showComments.show(bookInfo);
-            }
-        });
+
         return root;
     }
     //初始化
     public void initView(final View root){
+        Button detail_btn = (Button)root.findViewById(R.id.detail_btn);
+        Button add_btn = (Button)root.findViewById(R.id.add_btn);
         TextView bookNameTV = (TextView) root.findViewById(R.id.bookName);
         TextView priceTV = (TextView) root.findViewById(R.id.price);
         RatingBar startnumRB = (RatingBar) root.findViewById(R.id.starnum);
@@ -70,7 +79,7 @@ public class DetailFragment extends Fragment {
             sellVolumeTV.setText(bookInfo.getString("salesVolume"));
             introductionTV.setText(bookInfo.getString("introduction"));
             catalogTV.setText(bookInfo.getString("catalog"));
-            String  url = BitmapUtil.BASE_URL+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
+            String  url = HttpUtil.getRequestUrl(context)+"/"+bookInfo.getString("imagePath")+bookInfo.getString("imageName");
             asynsetImage(url,bookImgIV);
         }catch (Exception e){
 
@@ -96,6 +105,16 @@ public class DetailFragment extends Fragment {
                 }
             }
         });
+        detail_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showComments.show(bookInfo);
+            }
+        });
+        add_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                 addCart();              //加入购物车
+            }
+        });
 
     }
 
@@ -112,6 +131,31 @@ public class DetailFragment extends Fragment {
                 iv.setImageBitmap(bitmap);
             }
         }.execute(url);
+    }
+    //假如购物车 [{"bookid":2,"regname":"zhangfei","op":"add"}]
+    public void addCart(){
+        Map<String,String> params = new HashMap<>();
+        JSONObject jsonObject = new JSONObject();
+        JSONObject rst = null;
+        try {
+            jsonObject.put("bookid",bookInfo.getString("bookId"));
+            jsonObject.put("regname","zhangfei");
+            jsonObject.put("op","add");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        params.put("params",jsonObject.toString());
+        try {
+            String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/cart.json",params);
+            rst = new JSONObject(s);
+            if(rst.getBoolean("isOk") == true){
+                Toast.makeText(context,"加入购物车成功",Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(context,"加入购物车失败",Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -247,7 +247,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/corner_btn1"
-                android:text="加入购物车"/>
+                android:text="加入购物车"
+                android:id="@+id/add_btn"/>
             <Button
                 android:layout_marginLeft="20dp"
                 android:paddingBottom="5dp"
