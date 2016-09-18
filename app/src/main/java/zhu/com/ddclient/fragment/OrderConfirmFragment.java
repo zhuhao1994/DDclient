@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import org.json.JSONArray;
+
 import zhu.com.ddclient.R;
 /**
  * Created by zhu on 2016/9/12.
@@ -18,6 +21,17 @@ public class OrderConfirmFragment extends Fragment {
     private ListView lv = null;   //
     private Context context;
     private OrderConfirmListAdapter adapter = null;
+    private JSONArray confirmList = null;
+    private float total = 0;
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public void setConfirmList(JSONArray confirmList) {
+        this.confirmList = confirmList;
+    }
+
     public void setContext(Context context){
         this.context = context;
     }
