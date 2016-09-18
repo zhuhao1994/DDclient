@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import zhu.com.ddclient.R;
@@ -77,15 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 CartFragment cart = new CartFragment();
                 cart.setContext(MainActivity.this);
+                cart.setShowDetail(new ShowOrderConfirmFragment());
                 chageView(cart);
 
                 break;
             case R.id.bt3:
-
                 OrderListFragment orderListFragment = new OrderListFragment();
                 orderListFragment.setContext(MainActivity.this);
                 chageView(orderListFragment);
-
                 break;
             case R.id.bt4:
                 OrderConfirmFragment orderConfirm = new OrderConfirmFragment();
@@ -110,6 +110,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             commentsFragment.setBookinfo(jsonStr);
             chageView(commentsFragment);
         }
+
+        @Override
+        public void show(JSONArray s, double d) {
+
+        }
     }
 
 
@@ -125,5 +130,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             detailFragment.setBookInfo(jsonobj);
             chageView(detailFragment);
         }
+        @Override
+        public void show(JSONArray s, double d) {
+
+        }
     }
+
+    //显示ConfirmFragment
+    public class ShowOrderConfirmFragment implements ShowFragment{
+
+        public void show() {
+
+        }
+        public void show(JSONObject jsonobj) {
+
+        }
+
+        @Override
+        public void show(JSONArray s, double d) {
+            OrderConfirmFragment orderConfirmFragment = new OrderConfirmFragment();
+            orderConfirmFragment.setContext(MainActivity.this);
+            orderConfirmFragment.setTotal((float)d);
+            orderConfirmFragment.setConfirmList(s);
+            chageView(orderConfirmFragment);
+        }
+    }
+
+
 }
