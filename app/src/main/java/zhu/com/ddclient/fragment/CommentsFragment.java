@@ -40,7 +40,6 @@ public class CommentsFragment extends Fragment {
     private ListView lv = null;             //评论列表
     private JSONArray commentsList = null ; //评论信息
     public void setBookinfo(JSONObject bookinfo){
-
         this.bookinfo = bookinfo;
     }
     public void setContext(Context context){

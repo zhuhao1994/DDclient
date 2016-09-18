@@ -1,5 +1,6 @@
 package zhu.com.ddclient.myinterface;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -8,4 +9,5 @@ import org.json.JSONObject;
 public  interface ShowFragment {
     void show();
     void show(JSONObject s);
+    void show(JSONArray s,double d);
 }
