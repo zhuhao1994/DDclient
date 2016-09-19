@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 orderConfirm.setContext(MainActivity.this);
                 orderConfirm.setTotal(0);
                 orderConfirm.setConfirmList(new JSONArray());
+                orderConfirm.setShowFragment(new ShowHomeFragment());
                 chageView(orderConfirm);
                 break;
             case R.id.bt5:
@@ -157,7 +158,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             orderConfirmFragment.setContext(MainActivity.this);
             orderConfirmFragment.setTotal((float)d);
             orderConfirmFragment.setConfirmList(s);
+            orderConfirmFragment.setShowFragment(new ShowHomeFragment());
             chageView(orderConfirmFragment);
+        }
+    }
+
+    //显示HomeFragment
+    public class ShowHomeFragment implements ShowFragment{
+
+        public void show() {
+              HomeFragment homeFragment = new HomeFragment();
+              homeFragment.setContext(MainActivity.this);
+              homeFragment.setShowDetail(new ShowDetailFragment());
+              chageView(homeFragment);
+        }
+        public void show(JSONObject jsonobj) {
+
+        }
+
+        @Override
+        public void show(JSONArray s, double d) {
+
         }
     }
 
