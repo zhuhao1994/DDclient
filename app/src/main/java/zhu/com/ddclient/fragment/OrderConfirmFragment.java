@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import zhu.com.ddclient.R;
+import zhu.com.ddclient.activity.MainActivity;
 import zhu.com.ddclient.myinterface.ShowFragment;
 import zhu.com.ddclient.util.BitmapUtil;
 import zhu.com.ddclient.util.CommonUtil;
@@ -51,6 +52,11 @@ public class OrderConfirmFragment extends Fragment {
     private String deliverWayArray[] = {"顺丰快递","邦德物流","EMS"};
     private String addressId = "";
     private Button button = null;
+    private ShowFragment showFragment = null;
+
+    public void setShowFragment(MainActivity.ShowHomeFragment showFragment) {
+        this.showFragment = showFragment;
+    }
 
     public void setTotal(float total) {
         this.total = total;
@@ -108,7 +114,7 @@ public class OrderConfirmFragment extends Fragment {
                         Log.i("订单确认请求数据",object.toString());
                         if(object.getBoolean("isOk")){
                             Toast.makeText(context,"下单成功",Toast.LENGTH_SHORT).show();
-
+                            showFragment.show();
                         }
                         else{
                             Toast.makeText(context,"下单失败",Toast.LENGTH_SHORT).show();
