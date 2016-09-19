@@ -55,13 +55,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-//        new Thread(){
-//            @Override
-//            public void run() {
-//                BitmapUtil.getBitmap(LoginActivity.this,"http://172.19.22.17:8080/img/books/20285763-1_b.jpg");
-//            }
-//        }.start();
-
         showToast("start!");
         sharedPreferences = this.getSharedPreferences("my",MODE_WORLD_READABLE);
         //从shareReference中获取ip和port

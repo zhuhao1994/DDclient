@@ -90,7 +90,7 @@ public class HttpUtil
                         }
                         String cookies = CommonUtil.getValueFromLocal(context,"Set-Cookie");
                         if (cookies != "")
-                        post.setHeader("Cookie",cookies);
+                          post.setHeader("Cookie",cookies);
                         Log.i("http请求会话",cookies);
                         // 设置请求参数
                         post.setEntity(new UrlEncodedFormEntity(params, "gbk"));
@@ -102,7 +102,6 @@ public class HttpUtil
                             HttpEntity entity = httpResponse.getEntity();
                             //将会话id写入本次
                             Header headers[] = httpResponse.getHeaders("Set-Cookie");
-
                             for(Header header:headers){
                                 HeaderElement elements[] = header.getElements();
                                 for(HeaderElement element:elements)
@@ -120,7 +119,6 @@ public class HttpUtil
         new Thread(task).start();
         return task.get();
     }
-
     public static String postRequest(final String url
             , final Map<String ,String> rawParams)throws Exception
     {
