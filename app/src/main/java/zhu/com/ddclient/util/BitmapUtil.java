@@ -48,7 +48,7 @@ public class BitmapUtil {
             return bitmap;
         }
     }
-
+    //获取图片，若本地存在该图片，即在本地加载，否则请求服务器图片数据
     public static Bitmap getBitmap(Context context ,String url) {
         URL myFileURL;
         Bitmap bitmap = null;
@@ -93,6 +93,7 @@ public class BitmapUtil {
         }
 
     }
+    //向服务器请求验证码图片
     public static Bitmap getHttpBitmap(Context context,String url) {
         URL myFileURL;
         Bitmap bitmap = null;
