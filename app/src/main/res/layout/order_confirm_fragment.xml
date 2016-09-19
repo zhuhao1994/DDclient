@@ -50,7 +50,8 @@
                 android:layout_column="1"
                 android:paddingLeft="15dp"
                 android:text="湖北文理学院"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:id="@+id/address"/>
             <ImageView
                 android:layout_width="14dp"
                 android:layout_height="14dp"
@@ -72,7 +73,8 @@
             android:paddingBottom="3dp"
             android:paddingTop="3dp"
             android:background="#fff5ee"
-            android:layout_marginTop="1dp">
+            android:layout_marginTop="1dp"
+            android:id="@+id/deliverRow">
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -85,10 +87,11 @@
                 android:layout_weight="3"
                 android:layout_column="1"
                 android:paddingLeft="15dp"
-                android:text="普通快递送货上门"
+                android:text="顺丰快递"
                 android:textColor="#000000"
                 android:gravity="right"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp"
+                android:id="@+id/devilerView"/>
             <ImageView
                 android:layout_width="14dp"
                 android:layout_height="14dp"
@@ -169,7 +172,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_column="1"
-                android:text="100.00"
+                android:id="@+id/total"
                 android:gravity="left"
                 android:textColor="@color/red"
                 android:paddingRight="10dp"/>
@@ -180,7 +183,8 @@
                 android:background="@drawable/corner_btn2"
                 android:padding="3dp"
                 android:layout_marginRight="10dp"
-                android:text="下单"/>
+                android:text="下单"
+                android:id="@+id/comfirmBtn"/>
         </TableRow>
     </TableLayout>
 </LinearLayout>
