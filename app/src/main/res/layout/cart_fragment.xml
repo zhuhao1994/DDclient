@@ -21,7 +21,8 @@
             android:textSize="18dp"
             android:textColor="#EEEEEE"
             android:background="#428BCA"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:id="@+id/delete_btn"/>
     </RelativeLayout>
     <ListView
         android:id="@+id/listView"
@@ -60,6 +61,7 @@
                     android:textColor="#000000"
                     android:textSize="15dp"
                     android:layout_marginRight="5dp"
+                    android:id="@+id/selectAll_btn"
                     android:text="全选"/>
                 <TextView
                     android:layout_width="wrap_content"
