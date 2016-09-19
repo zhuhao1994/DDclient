@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -54,15 +55,22 @@ public class BitmapUtil {
         Bitmap bitmap = null;
         String filename = url.substring(url.lastIndexOf("/")+1,url.length());
         Log.i("图片名称:",filename);
-        String localpath = context.getCacheDir().getAbsolutePath();
+        String localpath = context.getCacheDir().getAbsolutePath()+"/imgs/"+filename;
         Log.i("本地图片路径:",localpath);
-        File file = new File(localpath+"/"+filename);
+        File file = new File(localpath);
+        if(file.getParentFile().exists() == false)
+            file.getParentFile().mkdir(); //创建图片缓存目录
         if(file.exists()){
             Log.i(filename,"本地图片存在");
             bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
             return bitmap;
         }else {
             Log.i(filename,"本地图片不存在");
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             try {
                 myFileURL = new URL(url);
                 //获得连接
