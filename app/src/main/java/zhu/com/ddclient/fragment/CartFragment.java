@@ -43,7 +43,7 @@ public class CartFragment extends Fragment {
     private Context context;
     private BooKListAdapter adapter = null;
     private ShowFragment showDetail = null;
-    private JSONArray itemList = null; //购物车清单
+    private JSONArray itemList = new JSONArray(); //购物车清单
     private JSONArray confirmItemList = new JSONArray(); //确认清单
     private ArrayList<JSONObject> tempConfirmItemList = new ArrayList<>();
     private TextView totalPriceTv = null;
@@ -93,6 +93,41 @@ public class CartFragment extends Fragment {
 
             }
         });
+        root.findViewById(R.id.delete_btn).setOnClickListener(new View.OnClickListener() {  //删除
+            @Override
+            public void onClick(View v) {
+                try {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("regname",UserUtil.getUserID());
+                    jsonObject.put("op","del");
+                    JSONArray jsonArray = new JSONArray();
+                    for (int i = 0;i<itemList.length() ;i++){
+                        if(itemList.getJSONObject(i).getBoolean("isChecked") == true){
+                           jsonArray.put(new JSONObject().put("bookid",itemList.getJSONObject(i).getString("bookId")));
+                        }
+                    }
+                    jsonObject.put("books",jsonArray);
+                    Map<String,String> params = new HashMap<>();
+                    params.put("params",jsonObject.toString());
+                    Log.i("params:",jsonObject.toString());
+                    String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/cart.json",params);
+                    JSONObject jo = new JSONObject(s);
+                    if(jo.getBoolean("isOk") == true)
+                        Toast.makeText(context,"更新了购物车数据",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(context,"更新购物车数据失败",Toast.LENGTH_SHORT).show();
+                    refresh();//刷新
+                }catch (Exception e){
+
+                }
+
+            }
+        });
+    }
+    //刷新购物车数据，刷新页面
+    private void refresh(){
+        requestServerData();
+        adapter.notifyDataSetChanged();
     }
     //向请求服务器购物车数据数据 [{"regname":"zhangfei"}]
     protected void requestServerData(){
