@@ -28,6 +28,7 @@ import zhu.com.ddclient.activity.MainActivity;
 import zhu.com.ddclient.myinterface.ShowFragment;
 import zhu.com.ddclient.activity.MainActivity.ShowCommentsFragment;
 import zhu.com.ddclient.util.BitmapUtil;
+import zhu.com.ddclient.util.CommonUtil;
 import zhu.com.ddclient.util.HttpUtil;
 
 /**
@@ -132,14 +133,14 @@ public class DetailFragment extends Fragment {
             }
         }.execute(url);
     }
-    //假如购物车 [{"bookid":2,"regname":"zhangfei","op":"add"}]
+    //加入购物车 [{"bookid":2,"regname":"zhangfei","op":"add"}]
     public void addCart(){
         Map<String,String> params = new HashMap<>();
         JSONObject jsonObject = new JSONObject();
         JSONObject rst = null;
         try {
             jsonObject.put("bookid",bookInfo.getString("bookId"));
-            jsonObject.put("regname","zhangfei");
+            jsonObject.put("regname", CommonUtil.getValueFromLocal(context,"name"));
             jsonObject.put("op","add");
         } catch (JSONException e) {
             e.printStackTrace();

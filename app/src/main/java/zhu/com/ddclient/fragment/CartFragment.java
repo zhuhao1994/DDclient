@@ -32,8 +32,8 @@ import zhu.com.ddclient.R;
 import zhu.com.ddclient.activity.MainActivity;
 import zhu.com.ddclient.myinterface.ShowFragment;
 import zhu.com.ddclient.util.BitmapUtil;
+import zhu.com.ddclient.util.CommonUtil;
 import zhu.com.ddclient.util.HttpUtil;
-import zhu.com.ddclient.util.UserUtil;
 
 /**
  * Created by zhu on 2016/9/11.
@@ -90,6 +90,33 @@ public class CartFragment extends Fragment {
         root.findViewById(R.id.update_btn).setOnClickListener(new View.OnClickListener() {  //修改
             @Override
             public void onClick(View v) {
+                //{"regname":"zhangfei","op":"edit","books":[{"bookid":"7","quantity":"2"}]}
+                try {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("regname",CommonUtil.getValueFromLocal(context,"name"));
+                    jsonObject.put("op","edit");
+                    JSONArray jsonArray = new JSONArray();
+                    for (int i = 0;i<itemList.length() ;i++){
+                        if(itemList.getJSONObject(i).getBoolean("isChecked") == true){
+                            jsonArray.put(new JSONObject()
+                                    .put("bookid",itemList.getJSONObject(i).getString("bookId"))
+                                    .put("quantity",itemList.getJSONObject(i).getString("quantity")));
+                        }
+                    }
+                    jsonObject.put("books",jsonArray);
+                    Map<String,String> params = new HashMap<>();
+                    params.put("params",jsonObject.toString());
+                    Log.i("params:",jsonObject.toString());
+                    String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/cart.json",params);
+                    JSONObject jo = new JSONObject(s);
+                    if(jo.getBoolean("isOk") == true)
+                        Toast.makeText(context,"修改了了购物车数据",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(context,"修改购物车数据失败",Toast.LENGTH_SHORT).show();
+                    refresh();//刷新
+                }catch (Exception e){
+
+                }
 
             }
         });
@@ -98,7 +125,7 @@ public class CartFragment extends Fragment {
             public void onClick(View v) {
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("regname",UserUtil.getUserID());
+                    jsonObject.put("regname",CommonUtil.getValueFromLocal(context,"name"));
                     jsonObject.put("op","del");
                     JSONArray jsonArray = new JSONArray();
                     for (int i = 0;i<itemList.length() ;i++){
@@ -123,6 +150,32 @@ public class CartFragment extends Fragment {
 
             }
         });
+        CheckBox checkBox = (CheckBox)root.findViewById(R.id.selectAll_btn);
+        checkBox.setOnCheckedChangeListener(   //全选
+                new CompoundButton.OnCheckedChangeListener(){
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        // TODO Auto-generated method stub
+                        if(isChecked){
+                            try {
+                               for (int i = 0 ;i < itemList.length(); i++)
+                                      itemList.getJSONObject(i).put("isChecked",true);
+                            }catch (Exception e){
+
+                            }
+                        }else{
+                            try{
+                              for (int i = 0 ;i < itemList.length(); i++)
+                                     itemList.getJSONObject(i).put("isChecked",false);
+                            }catch (Exception e){
+
+                            }
+                        }
+                        refreshTotalPrice();
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
     }
     //刷新购物车数据，刷新页面
     private void refresh(){
@@ -134,7 +187,7 @@ public class CartFragment extends Fragment {
         Map<String,String> params = new HashMap<>();
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("regname", UserUtil.getUserID());
+            jsonObject.put("regname", CommonUtil.getValueFromLocal(context,"name"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -143,6 +196,9 @@ public class CartFragment extends Fragment {
             String s = HttpUtil.postRequest(HttpUtil.getRequestUrl(context)+"/cart.json",params);
             itemList =  new JSONArray(s);
             Log.i("长度: ",itemList.length()+"");
+            for (int i = 0 ;i < itemList.length(); i++){
+                itemList.getJSONObject(i).put("isChecked",false);  //添加选中属性
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -183,9 +239,10 @@ public class CartFragment extends Fragment {
             TextView bookNameTV = (TextView) lineLayout.findViewById(R.id.bookName);
             final TextView priceTV    = (TextView) lineLayout.findViewById(R.id.price);
             final EditText quantityET = (EditText) lineLayout.findViewById(R.id.quantity);
+            CheckBox checkBox  = (CheckBox)lineLayout.findViewById(R.id.checkBox);
             try {
-                itemList.getJSONObject(position).put("isChecked",false);
                 JSONObject iteminfo = (JSONObject) itemList.get(position);
+                checkBox.setChecked(iteminfo.getBoolean("isChecked"));
                 bookNameTV.setText(iteminfo.getString("bookName"));
                 priceTV.setText(iteminfo.getString("bookPrice"));
                 quantityET.setText(iteminfo.getString("quantity"));
@@ -226,7 +283,7 @@ public class CartFragment extends Fragment {
                 }
             });
 
-            ((CheckBox)lineLayout.findViewById(R.id.checkBox)).setOnCheckedChangeListener(
+            checkBox.setOnCheckedChangeListener(
                     new CompoundButton.OnCheckedChangeListener(){
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
