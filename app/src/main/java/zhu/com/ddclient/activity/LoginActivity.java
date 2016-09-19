@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             LoginResponseParams answer = requestServerData(params);
             if(answer.getIsOk() == true){
                 CommonUtil.saveValueToLocal(getApplicationContext(),"uid",answer.getCusid());
-                showToast("欢迎"+CommonUtil.getValueFromLocal(getApplicationContext(),"uid"));
+                CommonUtil.saveValueToLocal(getApplicationContext(),"name",uid);
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
