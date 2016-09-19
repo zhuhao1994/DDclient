@@ -138,6 +138,9 @@ public class OrderConfirmFragment extends Fragment {
                         .show();
             }
         });
+        //加载用户名
+        TextView nameView = (TextView) root.findViewById(R.id.name);
+        nameView.setText(CommonUtil.getValueFromLocal(context,"name"));
         //加载收获地址
         address = (TextView) root.findViewById(R.id.address);
         JSONObject requestObj = new JSONObject();
