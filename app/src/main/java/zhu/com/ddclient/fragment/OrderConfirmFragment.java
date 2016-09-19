@@ -239,7 +239,7 @@ public class OrderConfirmFragment extends Fragment {
         new AsyncTask<String, Void, Bitmap>() {
             @Override
             protected Bitmap doInBackground(String... params) {
-                return BitmapUtil.getHttpBitmap(params[0]);
+                return BitmapUtil.getBitmap(context,params[0]);
             }
             @Override
             protected void onPostExecute(Bitmap bitmap) {
