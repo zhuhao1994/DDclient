@@ -45,17 +45,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editText1;//用户名
     private EditText editText2;//密码
     private EditText editText3;//验证码
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-   // private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        showToast("start!");
+
         sharedPreferences = this.getSharedPreferences("my",MODE_WORLD_READABLE);
         //从shareReference中获取ip和port
         getSocket();
