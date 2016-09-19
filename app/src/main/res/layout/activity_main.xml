@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:button="@null"
                 android:drawableTop="@drawable/setting_grey"
-                android:text="设置"
+                android:text="退出"
                 android:textColor="#555555"
                 android:id="@+id/bt5"/>
         </RadioGroup>
