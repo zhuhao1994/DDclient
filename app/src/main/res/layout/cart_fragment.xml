@@ -48,20 +48,19 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox"
                     android:checked="false"
                     android:background="@drawable/checkbox_border_black"
                     android:textColor="#000000"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:id="@+id/selectAll_btn"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
                     android:textSize="15dp"
                     android:layout_marginRight="5dp"
-                    android:id="@+id/selectAll_btn"
                     android:text="全选"/>
                 <TextView
                     android:layout_width="wrap_content"
