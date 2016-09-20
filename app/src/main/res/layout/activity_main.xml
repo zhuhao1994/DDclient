@@ -47,7 +47,7 @@
                 android:drawableTop="@drawable/cart_grey"
                 android:button="@null"
                 android:text="购物车"
-                android:textColor="#000000"
+                android:textColor="#555555"
                 android:id="@+id/bt2"/>
             <RadioButton
                 android:layout_width="0dp"
@@ -58,14 +58,15 @@
                 android:button="@null"
                 android:text="订单"
                 android:textColor="#555555"
-                android:id="@+id/bt3"/>
+                android:id="@+id/bt3"
+                android:checked="false" />
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:button="@null"
-                android:drawableTop="@drawable/order_grey"
+                android:drawableTop="@drawable/order_yes"
                 android:text="订单确认"
                 android:textColor="#555555"
                 android:id="@+id/bt4"/>

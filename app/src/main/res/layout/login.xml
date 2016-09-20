@@ -53,6 +53,7 @@
                 android:singleLine="true"
                 android:id="@+id/uid"
                 android:text="zhangfei"
+
                 />
             <TextView android:layout_width="40dp"
                 android:layout_height="wrap_content"
@@ -75,6 +76,7 @@
                 android:singleLine="true"
                 android:id="@+id/password"
                 android:text="zhangfei"
+                android:inputType="textPassword"
                 />
         </TableRow>
         <TableRow android:layout_margin="10dp">
