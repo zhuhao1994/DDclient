@@ -15,7 +15,8 @@
             android:layout_centerVertical="true"
             android:textSize="18dp"
             android:textColor="#fff5ee"
-            android:text="订单结算"/>
+            android:text="订单结算"
+            android:id="@+id/orderTitle"/>
     </RelativeLayout>
 <TextView
     android:layout_width="match_parent"

@@ -68,11 +68,20 @@ public class OrderListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.order_list_fragment,container,false);
-        adapter = new OrderListAdapter();
-        lv = (ListView) root.findViewById(R.id.listView);
-        lv.setAdapter(adapter);
-        return root;
+        if(orderArray != null && orderArray.length()>0){
+            View root = inflater.inflate(R.layout.order_list_fragment,container,false);
+            adapter = new OrderListAdapter();
+            lv = (ListView) root.findViewById(R.id.listView);
+            lv.setAdapter(adapter);
+            return root;
+        }
+        else {
+            View  root = inflater.inflate(R.layout.no_orders,container,false);
+            TextView textView = (TextView) root.findViewById(R.id.orderTitle);
+            textView.setText("我的订单");
+            return root;
+        }
+
     }
 
     class OrderListAdapter extends BaseAdapter{
