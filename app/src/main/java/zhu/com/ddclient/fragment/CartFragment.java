@@ -84,7 +84,7 @@ public class CartFragment extends Fragment {
                      }
                  }
                  Log.i("购买清单",itemList.toString());
-                 showDetail.show(jsonArray,0.0);
+                 showDetail.show(jsonArray,totalPrice);
             }
         });
         root.findViewById(R.id.update_btn).setOnClickListener(new View.OnClickListener() {  //修改
@@ -144,6 +144,7 @@ public class CartFragment extends Fragment {
                     else
                         Toast.makeText(context,"更新购物车数据失败",Toast.LENGTH_SHORT).show();
                     refresh();//刷新
+                    refreshTotalPrice();
                 }catch (Exception e){
 
                 }
